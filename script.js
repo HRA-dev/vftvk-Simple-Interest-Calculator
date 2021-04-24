@@ -1,15 +1,26 @@
-function init(val) {
+function init() {
     document.getElementById("amount").focus();
     updateTextInput(rate.value);
+    document.getElementById("btn_calc").disabled = true; 
 }
 
 function updateTextInput(val) {
     document.getElementById('textInput').value=val+"%"; 
 }
 
+
+// enable button only if amount is a positive number
+function validate() { 
+    alert("ffff");
+    alert(isNaN(amount.value));
+    if (isNaN(amount.value) || (parseInt(amount.value) <= 0)) { 
+        alert("Positive amount expected"); 
+    }
+}
+
+
 function compute() {
 
-    validate()
     p = document.getElementById("principal").value;
 
     /* declare variables*/
@@ -28,15 +39,7 @@ function compute() {
 "in the year"+"&nbsp;"+(cur_year);
 
 }
-     
-function validate() { 
-    amount = document.getElementById("amount").value;
 
-    if ((IsNaN(amount)==True) || (parseInt(amount) <= 0) ) {
-        alert("Enter a positive amount!");
-        document.getElementById("amount").focus();
-    }
-}
 
 
 function test () {
