@@ -1,4 +1,14 @@
-body {background-color:tan;}
-h1{color:green;}
+body {background-color:black;}
+h1{color:gray; font-size: 32px; font-family:Verdana, Geneva, Tahoma, sans-serif, Courier, monospace ;text-align: center;}
 
+
+#inner {
+    height: 80%;
+    width: 80%;
+    margin: 0 auto;
+    vertical-align: middle;
+    border-radius: 25px;
+    background: white;
+    padding: 20px;
+}
 
