@@ -1,6 +1,7 @@
 body {background-color:black;}
 h1{color:gray; font-size: 32px; font-family:Verdana, Geneva, Tahoma, sans-serif, Courier, monospace ;text-align: center;}
 
+label { display: inline-block; width: 120px; }
 
 #inner {
     height: 80%;
