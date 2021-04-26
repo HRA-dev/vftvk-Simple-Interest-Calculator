@@ -21,8 +21,6 @@ function validate() {
 
 function compute() {
 
-    p = document.getElementById("principal").value;
-
     /* declare variables*/
     amount = document.getElementById('amount').value;
     rate= document.getElementById('rate').value;
