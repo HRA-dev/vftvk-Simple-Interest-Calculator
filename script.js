@@ -1,90 +1,54 @@
 function init() {
-    document.getElementById("amount").focus();
-    updateTextInput(rate.value);
-    document.getElementById("btn_calc").disabled = true; 
+    
+    /* declare variables*/
+    amount = document.getElementById('amount');
+    rate = document.getElementById('rate_slider');
+    rate_display = document.getElementById('rate_display');
+    nb_years=document.getElementById('nbyears');
+    result=document.getElementById('result');
+    
+    // display current rate
+    update_rate(rate.value);
+
+    // reset output
+    result.innerHTML = ""
+
+    // focus on first input field
+    amount.focus();
 }
 
-function updateTextInput(val) {
-    document.getElementById('textInput').value=val+"%"; 
+
+function update_rate(val) {
+    rate_display.innerHTML = parseFloat(val).toFixed(2) + "%" ; 
 }
 
+function isAmountOK(val){
+    return (isNaN(val) || (parseInt(val) <= 0) || val === undefined || val == null || val.length <= 0) ? false : true;
+}
 
 // enable button only if amount is a positive number
 function validate() { 
-    alert("ffff");
-    alert(isNaN(amount.value));
-    if (isNaN(amount.value) || (parseInt(amount.value) <= 0)) { 
+    if (isNaN(amount.value) || isEmpty(amount.value) || (parseInt(amount.value) <= 0)) { 
         alert("Positive amount expected"); 
+
     }
 }
 
 
 function compute() {
 
-    /* declare variables*/
-    amount = document.getElementById('amount').value;
-    rate= document.getElementById('rate').value;
-    nb_years=document.getElementById('nbyears').value;
-    result=document.getElementById('result');
-
-    /* calcul du nombre d'année*/
-    var today= new Date();
-    var cur_year = today.getFullYear();
-
-    /* output */
-    result.innerHTML="If you deposit"+"&nbsp;"+(amount)+","+"<br/>"+ "at an interest rate of"+"&nbsp;"+(rate)+"."+"<br/>"+
-"You will receive an amount of"+"&nbsp;"+(amount*rate*nb_years/100)+","+"<br/>"+
-"in the year"+"&nbsp;"+(cur_year);
-
-}
-
-
-
-function test () {
-
-var principal = document.getElementById("principal").value;
-if (principal<=0){
-  document.getElementById("result").innerHTML = "Please enter a valid amount.";
-  return;
-}
-var rate = document.getElementById("rate").value;
-var years = document.getElementById("years").value;
-var interest = (parseInt(principal) * parseFloat(rate) * parseInt(years))/100;
-var currentDate = new Date();
-var year = currentDate.getFullYear();
-var maturityYear = parseInt(years) + parseInt(year);
-var maturityValue = parseInt(interest) + parseInt(principal);
-var output = "If you deposit " + principal +"<br>at an interest rate of " + rate +"%.<br>You will receive an amount of " + maturityValue + "<br> at year " + maturityYear + ".<br>";
-document.getElementById("result").innerHTML = output;
-
-
-}
-
-
-function test2() {
-    p = document.getElementById("principal").value;
- 
-    if(parseInt(p)>0 )          /*this condition will again validate 
-                                principal input field after clicking on calculate interest button. */
-    {
-    r=document.getElementById("rate").value;   
-    y=document.getElementById("years").value; 
-    i=parseInt(p)*parseInt(r)*parseInt(y)/100;
-    total = parseInt(p)+i;
-    var d = new Date();
-    var n = d.getFullYear();
-    years=n+parseInt(y);
-    str="<br/> If you deposit <span style='background-color:yellow;'>"+p+"</span>";
-    str=str+"<br/> at an interset rate of <span style='background-color:yellow;'>"+r+"%.</span>";
-    str=str+"<br/> you will receive amount of <span style='background-color:yellow;'>"+total+",</span>";
-    str=str+"<br/> in the year <span style='background-color:yellow;'>"+years+"</span>";
-
-    document.getElementById("result").innerHTML=str; 
+    if (isAmountOK(amount.value) == true) { 
+        var today= new Date();
+        var cur_year = today.getFullYear();
+        nbyears = parseInt(nb_years.value)
+        interest = amount.value * rate.value * nbyears /100;
+        result.innerHTML =  "If you deposit " + amount.value + ",<br/>" +
+                            "at an interest rate of " + rate_display.innerHTML + ".<br/>" +
+                            "You will receive an amount of " + interest + ",<br/>" +
+                            "in the year " + (cur_year + nbyears);
     }
-    else                  /*if this conditon gets failed, this case
-                           will move focus to principal amount input field and alert a message though else condition */
-    {
-      alert("Enter a positive number");
-     document.getElementById("principal").focus();
+    else  { 
+        result.innerHTML = "";
+        alert("Positive amount expected"); 
     }
 }

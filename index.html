@@ -5,43 +5,47 @@
     </head>
     <body onload="init()">
         <div id="inner">
-        <h1>Simple Interest Calculator</h1>
+            
+            <h1>Simple Interest Calculator</h1>
+            <div id="inner2">
 
-        <div>
-        <label for="amount">Amount</label>
-        <input type="number" id="amount" onchange="validate()" />
-        </div>
+                <div>
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount"/>
+                </div>
 
-        <div>
-        <label for="rate">Interest Rate</label>
-        <input type="range" name="rate" id="rate" min="0" max="21" step=".5" value="10.5" onchange="updateTextInput(this.value);">
-        <input type="text" id="textInput" value="" readonly="readonly">
-        </div>
-        
-        <div>
-        <label for="nbyears">No. of Years</label>
-        <select name="nbyears" id="nbyears">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        </div>
-        
-        <div>
-        Interest : <span id="result"></span><br>
-        </div>
-        <button onclick="compute()">Compute Interest</button>
+                <div>
+                    <label for="rate_slider">Interest Rate</label>
+                    <input type="range" name="rate_slider" id="rate_slider" min="0" max="21" step=".5" value="10.5" onchange="update_rate(this.value);">
+                    <label id="rate_display" />
+                </div>
+                
+                <div>
+                    <label for="nbyears">No. of Years</label>
+                    <select id="nbyears">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                
+                <div>Interest : <span id="result"></span></div>
 
-        </div>
-        <div>
-            <p>&copy; Everyone Can Get Rich<p>
+                <div>
+                    <button onclick="compute()">Compute Interest</button>
+                </div>
+ 
+            </div>
+
+            <div>&copy; Everyone Can Get Rich</div>
+
         </div>
     </body>
 </html>
