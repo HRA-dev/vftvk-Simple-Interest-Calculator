@@ -35,6 +35,7 @@ function validate() {
 }
 
 
+
 function compute() {
 
     if (isAmountOK(amount.value) == true) { 
@@ -42,13 +43,16 @@ function compute() {
         var cur_year = today.getFullYear();
         nbyears = parseInt(nb_years.value)
         interest = amount.value * rate.value * nbyears /100;
-        result.innerHTML =  "If you deposit " + amount.value + ",<br/>" +
-                            "at an interest rate of " + rate_display.innerHTML + ".<br/>" +
-                            "You will receive an amount of " + interest + ",<br/>" +
-                            "in the year " + (cur_year + nbyears);
+        sht = "<span class='highlight'>"
+        eht = "</span>"
+        result.innerHTML =  "If you deposit " + sht + amount.value + eht + ",<br/>" +
+                            "at an interest rate of " + sht + rate_display.innerHTML + eht + ".<br/>" +
+                            "You will receive an amount of " + sht + interest + eht + ",<br/>" +
+                            "in the year " + sht + (cur_year + nbyears) + eht;
     }
     else  { 
         result.innerHTML = "";
+        amount.focus();
         alert("Positive amount expected"); 
     }
 }

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+        <title>Web App – Simple Interest Calculator</title>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body onload="init()">
         <div id="inner">
@@ -17,7 +18,7 @@
 
                 <div>
                     <label for="rate_slider">Interest Rate</label>
-                    <input type="range" name="rate_slider" id="rate_slider" min="0" max="21" step=".5" value="10.5" onchange="update_rate(this.value);">
+                    <input type="range" name="rate_slider" id="rate_slider" min="1" max="20" step=".5" value="10.5" onchange="update_rate(this.value);">
                     <label id="rate_display"/>
                 </div>
                 
